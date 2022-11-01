@@ -1,6 +1,17 @@
-# Webpack config
+# To Do List
 
-> A template repository for for setting up webpack and linters
+> To-do list is a tool that helps to organize your day. It simply lists the things that you need to do and allows you to mark them as complete.
+
+## Built With
+
+- HTML
+- CSS
+- Javascript
+- Webpack
+
+## Live Demo
+
+![image](https://user-images.githubusercontent.com/37116322/199300003-078e3ca3-8131-4f0c-8163-e5c7e8d92060.png)
 
 ## Getting Started
 
@@ -22,6 +33,10 @@ To get a local copy up and running follow these simple steps.
 
 - `npm run build` - Builds development files into production code
 - `npm start` - Starts the development server
+
+### Deployment
+
+- [Live Demo Link](https://shisui6.github.io/to-do-list/)
 
 ## Authors
 
