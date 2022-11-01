@@ -1,10 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack Exercise</title>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e83d856101.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>To Do List</title>
+  </head>
+  <body>
+    <!-- Main -->
+    <main>
+      <h1>My Day</h1>
+      <p id="time"></p>
+      <!-- Tasks -->
+      <div class="tasks-cont">
+        <div class="tasks-flex">
+          <p class="title">Today's To Do</p>
+          <button><i class="fa-solid fa-arrows-rotate"></i></button>
+        </div>
+        <div class="tasks-flex">
+          <input type="text" placeholder="Add to your list..." />
+          <button><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        </div>
+        <ul id="tasks-ul"></ul>
+        <div class="clear">
+          <button>Clear all completed</button>
+        </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+        <p>
+          Copyright &copy 2022 All rights reserved | A project by Okemdi Udeh
+        </p>
+      </footer>
+    </main>
+  </body>
 </html>
