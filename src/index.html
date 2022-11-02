@@ -24,12 +24,12 @@
       <div class="tasks-cont">
         <div class="tasks-flex">
           <p class="title">Today's To Do</p>
-          <button><i class="fa-solid fa-arrows-rotate"></i></button>
+          <button id="refresh"><i class="fa-solid fa-arrows-rotate"></i></button>
         </div>
-        <div class="tasks-flex">
-          <input type="text" placeholder="Add to your list..." />
-          <button><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
-        </div>
+        <form class="tasks-flex" id="form-id">
+          <input type="text" placeholder="Add to your list..." id="description" required/>
+          <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+        </form>
         <ul id="tasks-ul"></ul>
         <div class="clear">
           <button>Clear all completed</button>
