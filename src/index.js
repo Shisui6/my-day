@@ -1,48 +1,50 @@
 // Imports
 import { DateTime } from 'luxon';
 import './style.css';
-
-// Declare tasks array
-const tasks = [
-  {
-    index: 0,
-    description: 'Set up webpack',
-    completed: false,
-  },
-  {
-    index: 1,
-    description: 'Set up linters',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'Create TO-do-list application',
-    completed: false,
-  },
-];
+import { Task, tasks } from './modules/task.js';
+import {
+  createTask,
+  appendTask,
+  addRemoveListener,
+  editTask,
+} from './modules/form.js';
 
 // Get relevant elements from the DOM
-const tasksElement = document.getElementById('tasks-ul');
 const time = document.getElementById('time');
-
-// Function to add each task to the Dom on page load
-const displayTasks = () => {
-  tasks.forEach((task) => {
-    const newTask = document.createElement('li');
-    newTask.classList.add('tasks-flex');
-    newTask.innerHTML = `
-      <div class="check">
-        <input type="checkbox" name="task-${task.index}" id="task-${task.index}">
-        <label for="task-${task.index}" class="strikethrough"> ${task.description}</label>
-      </div>
-      <button class="move"><i class="fa-solid fa-jet-fighter-up"></i></button>
-    `;
-    tasksElement.appendChild(newTask);
-  });
-};
-
-// Call displayTasks function
-displayTasks();
+const form = document.getElementById('form-id');
+const refresh = document.getElementById('refresh');
 
 // Use the DateTime object from luxon to display the current date and time in the DOM
 time.innerText = DateTime.now().toLocaleString(DateTime.DATETIME_FULL);
+
+// Check if local storage exists on page load and use data to add tasks to DOM
+if (localStorage.getItem('tasks')) {
+  const tasksData = JSON.parse(localStorage.getItem('tasks'));
+  tasksData.forEach((task) => {
+    const newTask = new Task(task.description);
+    tasks.push(newTask);
+    appendTask(newTask);
+    addRemoveListener(newTask);
+    editTask(newTask);
+  });
+}
+
+// Add click event listener to refresh button to clear the tasks array and remove all tasks from DOM
+refresh.addEventListener('click', () => {
+  refresh.classList.toggle('down');
+  const ul = document.querySelector('ul');
+  let child = ul.lastElementChild;
+  while (child) {
+    ul.removeChild(child);
+    child = ul.lastElementChild;
+  }
+  tasks.length = 0;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+});
+
+// Add event listener to form to create a new task and add it to the DOM
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  createTask();
+  form.reset();
+});
