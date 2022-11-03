@@ -7,7 +7,8 @@ import {
   appendTask,
   addRemoveListener,
   editTask,
-} from './modules/form.js';
+  modifyBackground,
+} from './modules/app.js';
 
 // Get relevant elements from the DOM
 const time = document.getElementById('time');
@@ -26,6 +27,7 @@ if (localStorage.getItem('tasks')) {
     appendTask(newTask);
     addRemoveListener(newTask);
     editTask(newTask);
+    modifyBackground();
   });
 }
 
@@ -40,6 +42,7 @@ refresh.addEventListener('click', () => {
   }
   tasks.length = 0;
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  modifyBackground();
 });
 
 // Add event listener to form to create a new task and add it to the DOM
