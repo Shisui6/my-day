@@ -47,6 +47,18 @@ export const editTask = (task) => {
   });
 };
 
+export const checkTask = (task) => {
+  const check = document.getElementById(`task-check-${task.index}`);
+  const taskInput = document.getElementById(`task-input-${task.index}`);
+
+  check.addEventListener('change', () => {
+    task.toggleCompleted();
+    check.parentNode.parentNode.parentNode.classList.toggle('complete');
+    taskInput.classList.toggle('strikethrough');
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
+};
+
 // Function to append task to DOM
 export const appendTask = (task) => {
   const newTask = document.createElement('li');
@@ -76,5 +88,6 @@ export const createTask = () => {
   appendTask(newTask);
   addRemoveListener(newTask);
   editTask(newTask);
+  checkTask(newTask);
   modifyBackground();
 };

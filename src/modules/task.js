@@ -25,6 +25,11 @@ class Task {
     const index = tasks.indexOf(this);
     tasks[index].description = desc;
   }
+
+  toggleCompleted() {
+    const index = tasks.indexOf(this);
+    tasks[index].completed = !tasks[index].completed;
+  }
 }
 
 export { tasks, Task };

@@ -129,7 +129,7 @@ input:placeholder-shown:focus + .placeholder::after {
 
 /* .tasks-cont li:focus-within {
   background-color: #fffeca;
-}
+} */
 
 .tasks-cont li:focus-within .remove {
   display: block;
@@ -139,7 +139,7 @@ input:placeholder-shown:focus + .placeholder::after {
   display: none;
 }
 
-.task-item:focus {
+/* .task-item:focus {
   background-color: #fffeca;
 } */
 
@@ -255,8 +255,9 @@ input:placeholder-shown:focus + .placeholder::after {
   -o-transition: all 0.3s ease-out;
 }
 
-.checkbox-cont input:checked ~ input {
+.strikethrough {
   text-decoration: line-through;
+  color: #8c8c8c;
 }
 
 .clear {
@@ -266,15 +267,19 @@ input:placeholder-shown:focus + .placeholder::after {
   justify-content: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  transition: 0.3s;
+}
+
+.clear:hover {
+  background-color: #cbcbcb;
 }
 
 .clear button {
   color: #7d7d7d;
 }
 
-.clear button:hover {
-  text-decoration: underline;
-  color: #000;
+.clear:hover button {
+  color: #fff;
 }
 
 /* Footer */

@@ -8,12 +8,14 @@ import {
   addRemoveListener,
   editTask,
   modifyBackground,
+  checkTask,
 } from './modules/app.js';
 
 // Get relevant elements from the DOM
 const time = document.getElementById('time');
 const form = document.getElementById('form-id');
 const refresh = document.getElementById('refresh');
+const clear = document.getElementById('clear-btn');
 
 // Use the DateTime object from luxon to display the current date and time in the DOM
 time.innerText = DateTime.now().toLocaleString(DateTime.DATETIME_FULL);
@@ -27,6 +29,7 @@ if (localStorage.getItem('tasks')) {
     appendTask(newTask);
     addRemoveListener(newTask);
     editTask(newTask);
+    checkTask(newTask);
     modifyBackground();
   });
 }
@@ -50,4 +53,17 @@ form.addEventListener('submit', (e) => {
   e.preventDefault();
   createTask();
   form.reset();
+});
+
+clear.addEventListener('click', () => {
+  const newTasks = tasks.filter((task) => task.completed === false);
+  tasks.length = 0;
+  newTasks.forEach((task) => {
+    tasks.push(task);
+  });
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+  document.querySelectorAll('ul > li.complete').forEach((el) => {
+    el.parentNode.removeChild(el);
+    modifyBackground();
+  });
 });
