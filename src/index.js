@@ -1,5 +1,6 @@
 // Imports
 import { DateTime } from 'luxon';
+import autoAnimate from '@formkit/auto-animate';
 import './style.css';
 import { Task, tasks } from './modules/task.js';
 import {
@@ -16,6 +17,9 @@ const time = document.getElementById('time');
 const form = document.getElementById('form-id');
 const refresh = document.getElementById('refresh');
 const clear = document.getElementById('clear-btn');
+const list = document.getElementById('tasks-ul');
+
+autoAnimate(list);
 
 // Use the DateTime object from luxon to display the current date and time in the DOM
 time.innerText = DateTime.now().toLocaleString(DateTime.DATETIME_FULL);
