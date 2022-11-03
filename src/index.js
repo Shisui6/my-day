@@ -55,6 +55,7 @@ form.addEventListener('submit', (e) => {
   form.reset();
 });
 
+// Add event listener to clear button to remove completed tasks from the DOM
 clear.addEventListener('click', () => {
   const newTasks = tasks.filter((task) => task.completed === false);
   tasks.length = 0;

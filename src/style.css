@@ -118,35 +118,22 @@ input:placeholder-shown:focus + .placeholder::after {
   list-style: none;
 }
 
-.tasks-cont li,
-.task-item {
-  transition: 0.3s;
-}
-
 .remove {
   display: none;
 }
 
-/* .tasks-cont li:focus-within {
-  background-color: #fffeca;
-} */
-
-.tasks-cont li:focus-within .remove {
-  display: block;
-}
-
-.tasks-cont li:focus-within .move {
-  display: none;
-}
-
-/* .task-item:focus {
-  background-color: #fffeca;
-} */
-
-.check {
+.check-bros {
   display: flex;
   width: 100%;
   align-items: center;
+}
+
+.check-bros:focus-within .remove {
+  display: block;
+}
+
+.check-bros:focus-within .move {
+  display: none;
 }
 
 .checkbox-cont {

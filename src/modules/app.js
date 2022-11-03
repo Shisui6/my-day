@@ -8,6 +8,7 @@ const tasksElement = document.getElementById('tasks-ul');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');
 
+// Function to alter the background styling when there are more than four elements in the task array
 export const modifyBackground = () => {
   if (tasks.length > 4) {
     main.style.height = '100%';
@@ -29,9 +30,9 @@ export const addRemoveListener = (task) => {
     task.removeTask();
     localStorage.setItem('tasks', JSON.stringify(tasks));
     if (e.target.tagName === 'I') {
-      e.target.parentNode.parentNode.remove();
+      e.target.parentNode.parentNode.parentNode.remove();
     } else {
-      e.target.parentNode.remove();
+      e.target.parentNode.parentNode.remove();
     }
     modifyBackground();
   });
@@ -47,13 +48,14 @@ export const editTask = (task) => {
   });
 };
 
+// Funtion to toggle the completed state of each task
 export const checkTask = (task) => {
   const check = document.getElementById(`task-check-${task.index}`);
   const taskInput = document.getElementById(`task-input-${task.index}`);
 
   check.addEventListener('change', () => {
     task.toggleCompleted();
-    check.parentNode.parentNode.parentNode.classList.toggle('complete');
+    check.parentNode.parentNode.classList.toggle('complete');
     taskInput.classList.toggle('strikethrough');
     localStorage.setItem('tasks', JSON.stringify(tasks));
   });
@@ -65,15 +67,15 @@ export const appendTask = (task) => {
   newTask.classList.add('tasks-flex');
   newTask.id = `task-${task.index}`;
   newTask.innerHTML = `
-      <div class="check">
-        <label class="checkbox-cont">
-          <input type="checkbox" name="task-${task.index}" id="task-check-${task.index}">
-          <span class="checkbox-custom"></span>
-        </label>
+      <label class="checkbox-cont">
+        <input type="checkbox" name="task-${task.index}" id="task-check-${task.index}">
+        <span class="checkbox-custom"></span>
+      </label>
+      <div class="check-bros">
         <input type="text" value="${task.description}" class="task-item" id="task-input-${task.index}"/>
+        <button class="move"><i class="fa-solid fa-jet-fighter-up"></i></button>
+        <button class="remove" id="remove-${task.index}"></i><i class="fa-solid fa-trash-can"></i></button>
       </div>
-      <button class="move"><i class="fa-solid fa-jet-fighter-up"></i></button>
-      <button class="remove" id="remove-${task.index}"></i><i class="fa-solid fa-trash-can"></i></button>
     `;
 
   tasksElement.appendChild(newTask);
