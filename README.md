@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-![image](https://user-images.githubusercontent.com/37116322/199300003-078e3ca3-8131-4f0c-8163-e5c7e8d92060.png)
+![image](https://user-images.githubusercontent.com/37116322/199832349-811055fd-e228-4258-978c-e5518dd34280.png)
 
 ## Getting Started
 

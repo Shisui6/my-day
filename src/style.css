@@ -20,18 +20,8 @@ main {
   align-items: center;
   padding-top: 60px;
   height: 100vh;
-  background-image: url("./images/tasks.jpg");
-  background-size: cover;
-}
-
-main::before {
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/tasks.jpg");
+  background-size: 100% 100%;
 }
 
 main h1,
@@ -53,9 +43,10 @@ main h1 {
 .tasks-cont {
   width: 50%;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.3);
   background-color: #fff;
   z-index: 2;
+  margin-bottom: 100px;
 }
 
 .tasks-flex {
@@ -100,50 +91,160 @@ input[type="text"]:focus {
   outline: none;
 }
 
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+input:placeholder-shown + .placeholder::after {
+  content: "Add a task";
+  color: #757575;
+}
+
+input:placeholder-shown:focus + .placeholder::after {
+  content: "Try typing 'Pay utilities notes by Friday 6pm'";
+}
+
+.placeholder {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  font-size: 14px;
+}
+
 #tasks-ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.tasks-cont li,
-.task-item {
-  transition: 0.3s;
-}
-
 .remove {
   display: none;
 }
 
-.tasks-cont li:focus-within {
-  background-color: #fffeca;
+.check-bros {
+  display: flex;
+  width: 100%;
+  align-items: center;
 }
 
-.tasks-cont li:focus-within .remove {
+.check-bros:focus-within .remove {
   display: block;
 }
 
-.tasks-cont li:focus-within .move {
+.check-bros:focus-within .move {
   display: none;
 }
 
-.task-item:focus {
-  background-color: #fffeca;
-}
-
-.check {
-  display: flex;
-  width: 100%;
-}
-
-input[type="checkbox"] {
-  margin-right: 5px;
-  border: none;
+.checkbox-cont {
+  position: relative;
   cursor: pointer;
+  height: 18px;
+  width: 18px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
-input[type="checkbox"]:checked + input.strikethrough {
+.checkbox-cont input {
+  opacity: 0;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  border: 2px solid #c1c1c3;
+}
+
+.checkbox-custom:hover {
+  border-color: #a1a1a3;
+}
+
+.checkbox-cont input:checked ~ .checkbox-custom {
+  -webkit-transform: rotate(0deg) scale(1);
+  -ms-transform: rotate(0deg) scale(1);
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+  border: 2px solid #fff;
+}
+
+.checkbox-custom::after {
+  position: absolute;
+  content: "";
+  left: 8px;
+  top: 5px;
+  height: 0;
+  width: 0;
+  border: solid #009bff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(0deg) scale(0);
+  -ms-transform: rotate(0deg) scale(0);
+  transform: rotate(0deg) scale(0);
+  opacity: 1;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+.checkbox-cont input:checked ~ .checkbox-custom::after {
+  -webkit-transform: rotate(45deg) scale(1);
+  -ms-transform: rotate(45deg) scale(1);
+  transform: rotate(45deg) scale(1);
+  opacity: 1;
+  left: 3px;
+  top: 0;
+  width: 6px;
+  height: 12px;
+  border: solid #009bff;
+  border-width: 0 2px 2px 0;
+}
+
+/* For Ripple Effect */
+.checkbox-cont .checkbox-custom::before {
+  position: absolute;
+  content: "";
+  left: 10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-radius: 5px;
+  border: 2px solid #000;
+  -webkit-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+}
+
+.checkbox-cont input:checked ~ .checkbox-custom::before {
+  left: -3px;
+  top: -3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  -webkit-transform: scale(1.8);
+  -ms-transform: scale(1.8);
+  transform: scale(1.8);
+  opacity: 0;
+  z-index: 999;
+  transition: all 0.3s ease-out;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+}
+
+.strikethrough {
   text-decoration: line-through;
+  color: #8c8c8c;
 }
 
 .clear {
@@ -153,15 +254,19 @@ input[type="checkbox"]:checked + input.strikethrough {
   justify-content: center;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  transition: 0.3s;
+}
+
+.clear:hover {
+  background-color: #cbcbcb;
 }
 
 .clear button {
   color: #7d7d7d;
 }
 
-.clear button:hover {
-  text-decoration: underline;
-  color: #000;
+.clear:hover button {
+  color: #fff;
 }
 
 /* Footer */
