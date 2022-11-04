@@ -36,7 +36,7 @@ To get a local copy up and running follow these simple steps.
 
 ### Deployment
 
-- [Live Demo Link](https://shisui6.github.io/to-do-list/)
+- [Live Demo Link](https://shisui6.github.io/to-do-list/dist/)
 
 ## Authors
 
