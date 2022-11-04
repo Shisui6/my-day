@@ -2,12 +2,12 @@
 
 * {
   box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
 }
 
 /* Body */
 
 body {
-  font-family: "Raleway", sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -18,7 +18,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 60px;
+  padding-top: 50px;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./images/tasks.jpg");
   background-size: 100% 100%;
@@ -27,7 +27,6 @@ main {
 main h1,
 #time {
   color: #fff;
-  z-index: 2;
 }
 
 main h1 {
@@ -38,36 +37,64 @@ main h1 {
   margin-bottom: 40px;
 }
 
+#empty {
+  width: 50%;
+  margin: 20px auto 0;
+  background-color: rgba(32, 43, 49, 0.85);
+  text-align: center;
+  padding: 25px 25px 20px;
+  border-radius: 16px;
+  color: #fff;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  animation: fadeIn 0.8s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+#empty h2 {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#empty p {
+  font-size: 12px;
+  line-height: 18px;
+}
+
 /* Tasks */
 
-.tasks-cont {
+.content {
   width: 50%;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.3);
-  background-color: #fff;
-  z-index: 2;
-  margin-bottom: 100px;
 }
 
-.tasks-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid #ebebeb;
-  padding: 0 15px;
+.hide {
+  display: none;
 }
 
-.title {
-  font-weight: 600;
-}
-
-.tasks-cont button {
+button {
   background: none;
   border: none;
   cursor: pointer;
 }
 
 #refresh {
+  color: #fff;
+  float: right;
+  position: relative;
+  bottom: 10px;
+  right: 15px;
+  opacity: 0;
+  animation: fadeIn 1s;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
   -moz-transition: all 0.8s linear;
   -webkit-transition: all 0.8s linear;
   transition: all 0.8s linear;
@@ -80,60 +107,48 @@ main h1 {
   transform: rotate(180deg);
 }
 
-input[type="text"] {
-  font-family: "Raleway", sans-serif;
-  padding: 15px 5px;
-  border: none;
-  width: 100%;
-}
-
-input[type="text"]:focus {
-  outline: none;
-}
-
-.input-container {
-  position: relative;
-  width: 100%;
-}
-
-input:placeholder-shown + .placeholder::after {
-  content: "Add a task";
-  color: #757575;
-}
-
-input:placeholder-shown:focus + .placeholder::after {
-  content: "Try typing 'Pay utilities notes by Friday 6pm'";
-}
-
-.placeholder {
-  position: absolute;
-  top: 15px;
-  left: 5px;
-  font-size: 14px;
-}
-
 #tasks-ul {
   padding: 0;
   margin: 0;
   list-style: none;
+  margin-bottom: 20px;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  background-color: #f1f0f1;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  clear: right;
+}
+
+li:hover {
+  background-color: #f6f6f6;
+}
+
+.task-item {
+  background-color: #f1f0f1;
+}
+
+li:hover .task-item {
+  background-color: #f6f6f6;
 }
 
 .remove {
-  display: none;
+  transition: 0.3s;
+}
+
+.remove:hover {
+  color: red;
 }
 
 .check-bros {
   display: flex;
   width: 100%;
   align-items: center;
-}
-
-.check-bros:focus-within .remove {
-  display: block;
-}
-
-.check-bros:focus-within .move {
-  display: none;
 }
 
 .checkbox-cont {
@@ -173,7 +188,7 @@ input:placeholder-shown:focus + .placeholder::after {
   -ms-transform: rotate(0deg) scale(1);
   transform: rotate(0deg) scale(1);
   opacity: 1;
-  border: 2px solid #fff;
+  border: none;
 }
 
 .checkbox-custom::after {
@@ -249,24 +264,86 @@ input:placeholder-shown:focus + .placeholder::after {
 
 .clear {
   background-color: #f6f6f6;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-radius: 10px;
   transition: 0.3s;
+  padding: 15px;
+  opacity: 0;
+  animation: fadeIn 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .clear:hover {
-  background-color: #cbcbcb;
-}
-
-.clear button {
-  color: #7d7d7d;
-}
-
-.clear:hover button {
+  background-color: #0daa32;
   color: #fff;
+}
+
+.clear-div {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+/* Form */
+
+form {
+  width: 70%;
+  position: absolute;
+  bottom: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #ebebeb;
+  padding: 0 15px;
+  background-color: #d1d2d7;
+  border-radius: 10px;
+}
+
+.input-container input {
+  background-color: #d1d2d7;
+}
+
+form:hover {
+  background-color: #f4f4f3;
+}
+
+form:hover input {
+  background-color: #f4f4f3;
+}
+
+.fa-plus {
+  color: #7d7d7d;
+  margin-right: 5px;
+}
+
+input[type="text"] {
+  padding: 15px 5px;
+  border: none;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+input:placeholder-shown + .placeholder::after {
+  content: "Add a task";
+  color: #222223;
+}
+
+input:placeholder-shown:focus + .placeholder::after {
+  content: "Try typing 'Pay utilities notes by Friday 6pm'";
+}
+
+.placeholder {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  font-size: 14px;
 }
 
 /* Footer */

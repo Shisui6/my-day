@@ -20,24 +20,31 @@
     <main>
       <h1>My Day</h1>
       <p id="time"></p>
-      <!-- Tasks -->
-      <div class="tasks-cont">
-        <div class="tasks-flex">
-          <p class="title">Today's To Do</p>
-          <button id="refresh"><i class="fa-solid fa-arrows-rotate"></i></button>
+      <!-- Content Container -->
+      <div class="content">
+        <!-- Refresh Button -->
+        <button class="hide" id="refresh"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <!-- Empty div -->
+        <div id="empty">
+          <h2>Focus on your day</h2>
+          <p>Get things done with My Day, a list <br> that contains your daily tasks</p>
         </div>
-        <form class="tasks-flex" id="form-id">
-          <div class="input-container">
-            <input type="text" placeholder=" " id="description" required/>
-            <span class="placeholder"></span>
-          </div>
-          <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
-        </form>
+        <!-- List container -->
         <ul id="tasks-ul"></ul>
-        <div class="clear">
-          <button id="clear-btn">Clear all completed</button>
+        <!-- Clear Button -->
+        <div class="clear-div">
+          <button class="clear hide" id="clear-btn">Clear completed</button>
         </div>
       </div>
+      <!-- Form -->
+      <form id="form-id">
+        <i class="fa-solid fa-plus"></i>
+        <div class="input-container">
+          <input type="text" placeholder=" " id="description" required/>
+          <span class="placeholder"></span>
+        </div>
+        <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+      </form>
       <!-- Footer -->
       <footer>
         <p>

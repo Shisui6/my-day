@@ -3,10 +3,10 @@ const tasks = [];
 
 // Create class declaration for tasks in task array
 class Task {
-  constructor(description) {
+  constructor(description, completed = false) {
     this.index = tasks.length + 1;
     this.description = description;
-    this.completed = false;
+    this.completed = completed;
   }
 
   addTask() {
