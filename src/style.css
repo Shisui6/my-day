@@ -336,7 +336,7 @@ input:placeholder-shown + .placeholder::after {
 }
 
 input:placeholder-shown:focus + .placeholder::after {
-  content: "Try typing 'Pay utilities notes by Friday 6pm'";
+  content: "Try typing 'Buy groceries'";
 }
 
 .placeholder {
@@ -353,4 +353,38 @@ footer {
   color: #fff;
   position: absolute;
   bottom: 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 915px) and (orientation: landscape) {
+  main {
+    height: 100%;
+  }
+
+  footer {
+    position: static;
+  }
+
+  form {
+    position: static;
+    margin-bottom: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .content {
+    width: 70%;
+  }
+
+  #empty {
+    width: 100%;
+  }
+
+  form {
+    width: 80%;
+  }
+
+  footer {
+    width: 80%;
+  }
 }
