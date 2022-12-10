@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/e83d856101.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>My Day</title>
+  <link rel="icon" href="favicon.png"><script defer src="main.js"></script></head>
+  <body>
+    <!-- Main -->
+    <main>
+      <h1>My Day</h1>
+      <p id="time"></p>
+      <!-- Content Container -->
+      <div class="content">
+        <!-- Refresh Button -->
+        <button class="hide" id="refresh"><i class="fa-solid fa-arrows-rotate"></i></button>
+        <!-- Empty div -->
+        <div id="empty">
+          <h2>Focus on your day</h2>
+          <p>Get things done with My Day, a list <br> that contains your daily tasks</p>
+        </div>
+        <!-- List container -->
+        <ul id="tasks-ul"></ul>
+        <!-- Clear Button -->
+        <div class="clear-div">
+          <button class="clear hide" id="clear-btn">Clear completed</button>
+        </div>
+      </div>
+      <!-- Form -->
+      <form id="form-id">
+        <i class="fa-solid fa-plus"></i>
+        <div class="input-container">
+          <input type="text" placeholder=" " id="description" required/>
+          <span class="placeholder"></span>
+        </div>
+        <button type="submit"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+      </form>
+      <!-- Footer -->
+      <footer>
+        <p>
+          Copyright &copy 2022 All rights reserved | A project by Okemdi Udeh
+        </p>
+      </footer>
+    </main>
+  </body>
+</html>
